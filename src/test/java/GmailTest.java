@@ -5,14 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.sql.Driver;
 
 /**
  * Created by User on 4/3/2016.
  */
 public class GmailTest {
-    private WebDriver driver;
     private GmailLoginPage page;
 
     @BeforeClass
@@ -22,14 +20,13 @@ public class GmailTest {
 
     @Before
     public void setUp() throws Exception {
-        driver= DriverFactory.getDriver();
-        page = new GmailLoginPage(driver);
+        page = new GmailLoginPage();
     }
 
     @After
     public void tearDown() throws Exception {
         System.out.println("I am in teardown");
-//        driver.quit();
+//        DriverFactory.getDriver().quit();
     }
 
     @AfterClass
@@ -40,13 +37,6 @@ public class GmailTest {
     @Test
     public void loadGmail() throws Exception {
         System.out.println("I am in test loadGmail");
-        page.login();
-//        driver.get(URL);
-//        WebElement emailInputBox = driver.findElement(By.id("Email"));
-//        emailInputBox.sendKeys(email);
-//        driver.findElement(By.name("signIn")).click();
-//        Thread.sleep(1000);
-//        driver.findElement(By.id("Passwd")).sendKeys(password);
-//        driver.findElement(By.id("signIn")).click();
+        page.login().composeEmail("testemail");
     }
 }
